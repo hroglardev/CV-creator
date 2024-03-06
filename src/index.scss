@@ -6,8 +6,10 @@
 
 body {
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  ;
 }
+
+$content-padding: 15px clamp(0.5rem, -3.23778rem + 15.738vw, 12.5rem);
+
+
