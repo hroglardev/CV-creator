@@ -1,4 +1,5 @@
 import Form from "../../components/Form/Form";
+import Cv from "../../components/Cv/Cv";
 import { useState } from "react";
 
 const Main = () => {
@@ -147,6 +148,13 @@ const Main = () => {
       <Form
         handleChange={handleChange}
         inputConfig={practicalExperienceInputs}
+      />
+      <Cv
+        name={cv.firstName + " " + cv.lastName}
+        phone={cv.phone}
+        email={cv.email}
+        educationalExperiences={cv.educationalExperience}
+        workExperiences={cv.workExperience}
       />
     </main>
   );
