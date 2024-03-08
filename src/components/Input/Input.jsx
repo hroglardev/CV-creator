@@ -1,10 +1,10 @@
-import "./Input.scss";
+import './Input.scss';
 
 const Input = ({ id, label, type, handleChange, value }) => {
   return (
-    <div className="input-wrapper">
-      <label htmlFor={id}>{label + ":"}</label>
-      {type !== "textarea" ? (
+    <div className='input-wrapper'>
+      <label htmlFor={id}>{label + ':'}</label>
+      {type !== 'textarea' ? (
         <input
           id={id}
           name={id}

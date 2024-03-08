@@ -1,160 +1,82 @@
-import Form from "../../components/Form/Form";
-import Cv from "../../components/Cv/Cv";
-import { useState } from "react";
-
+import Cv from '../../components/Cv/Cv';
+import { useState } from 'react';
+import GeneralInfoForm from '../../components/GeneralInfoForm/GeneralInfoForm';
+import ExperienceForm from '../../components/ExperienceForm/ExperienceForm';
+import {
+  generalInformationInputs,
+  experienceInputs
+} from '../../constants/inputs';
 const Main = () => {
-  const [generalInformation, setGeneralInformation] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    educationTitle: "",
-    educationStartDate: "",
-    educationEndDate: "",
-    educationDescription: "",
-    practicalTitle: "",
-    practicalStartDate: "",
-    practicalEndDate: "",
-    practicalDescription: "",
+  const [generalInfomation, setGeneralInformation] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: ''
   });
 
-  const [submissions, setSubmissions] = useState({
-    personalInformation: false,
-    educationExperience: false,
-    workExperience: false,
+  const [experiences, setExperiences] = useState({
+    academicExperience: [],
+    workExperience: []
   });
 
-  const [cv, setCv] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    educationalExperience: [],
-    workExperience: [],
-  });
-
-  const generalInformationInputs = [
-    {
-      id: "firstName",
-      label: "First Name",
-      type: "text",
-      value: generalInformation.firstName,
-    },
-    {
-      id: "lastName",
-      label: "Last Name",
-      type: "text",
-      value: generalInformation.lastName,
-    },
-    {
-      id: "email",
-      label: "Email",
-      type: "email",
-      value: generalInformation.email,
-    },
-    {
-      id: "phone",
-      label: "Phone",
-      type: "tel",
-      value: generalInformation.phone,
-    },
-  ];
-
-  const practicalExperienceInputs = [
-    {
-      id: "practicalTitle",
-      label: "Name of course",
-      type: "text",
-      value: generalInformation.practicalTitle,
-    },
-    {
-      id: "practicalStartDate",
-      label: "Start date",
-      type: "date",
-      value: generalInformation.practicalStartDate,
-    },
-    {
-      id: "epracticalEndDate",
-      label: "End date",
-      type: "date",
-      value: generalInformation.practicalEndDate,
-    },
-    {
-      id: "practicalDescription",
-      label: "Description",
-      type: "textarea",
-      value: generalInformation.practicalDescription,
-    },
-  ];
-
-  const educationalExperienceInputs = [
-    {
-      id: "educationTitle",
-      label: "Name of course",
-      type: "text",
-      value: generalInformation.educationTitle,
-    },
-    {
-      id: "educationStartDate",
-      label: "Start date",
-      type: "date",
-      value: generalInformation.educationStartDate,
-    },
-    {
-      id: "eductationEndDate",
-      label: "End date",
-      type: "date",
-      value: generalInformation.educationEndDate,
-    },
-    {
-      id: "educationDescription",
-      label: "Description",
-      type: "textarea",
-      value: generalInformation.educationDescription,
-    },
-  ];
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setGeneralInformation((previousData) => ({
-      ...previousData,
-      [name]: value,
-    }));
+  const handleExperiences = (event, formData, experienceType) => {
+    event.preventDefault();
+    const { title, startDate, endDate, description } = formData;
+    const experienceExists = experiences[`${experienceType}Experience`].some(
+      (experience) => experience.title === title
+    );
+    experienceExists
+      ? null
+      : setExperiences((previousData) => ({
+          ...previousData,
+          [`${experienceType}Experience`]: [
+            ...previousData[`${experienceType}Experience`],
+            { title, startDate, endDate, description }
+          ]
+        }));
   };
 
-  const handleSubmit = (event, formData) => {
-    event.preventDefault();
-    const { firstName, lastName, email, phone } = formData;
-    setCv((previousData) => ({
+  const addForm = (formType) => {
+    setExperiences((previousData) => ({
       ...previousData,
-      firstName,
-      lastName,
-      email,
-      phone,
+      [`${formType}Experience`]: [
+        ...previousData[`${formType}Experience`],
+        { title: '', startDate: '', endDate: '', description: '' }
+      ]
     }));
   };
 
   return (
     <main>
-      <Form
-        handleChange={handleChange}
-        inputConfig={generalInformationInputs}
-        handleSubmit={(event) => handleSubmit(event, generalInformation)}
+      <GeneralInfoForm
+        inputs={generalInformationInputs}
+        generalInformation={generalInfomation}
+        setGeneralInformation={setGeneralInformation}
       />
-      <Form
-        handleChange={handleChange}
-        inputConfig={educationalExperienceInputs}
-      />
-      <Form
-        handleChange={handleChange}
-        inputConfig={practicalExperienceInputs}
-      />
+      {experiences.academicExperience.map((academicExperience, index) => (
+        <ExperienceForm
+          key={academicExperience.title + index}
+          inputs={experienceInputs}
+          experienceType='academic'
+          handleSubmit={handleExperiences}
+        />
+      ))}
+      <button onClick={() => addForm('academic')}>Add Experience</button>
+      {experiences.workExperience.map((workExperience, index) => (
+        <ExperienceForm
+          key={workExperience + index}
+          inputs={experienceInputs}
+          experienceType='work'
+          handleSubmit={handleExperiences}
+        />
+      ))}
+      <button onClick={() => addForm('work')}>Add Experience</button>
       <Cv
-        name={cv.firstName + " " + cv.lastName}
-        phone={cv.phone}
-        email={cv.email}
-        educationalExperiences={cv.educationalExperience}
-        workExperiences={cv.workExperience}
+        name={generalInfomation.firstName + ' ' + generalInfomation.lastName}
+        phone={generalInfomation.phone}
+        email={generalInfomation.email}
+        educationalExperiences={experiences.academicExperience}
+        workExperiences={experiences.workExperience}
       />
     </main>
   );
