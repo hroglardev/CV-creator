@@ -15,6 +15,7 @@ const GeneralInfoForm = ({
 
   return (
     <form>
+      <legend>General information:</legend>
       {inputs.map((input) => (
         <Input
           key={input.id}

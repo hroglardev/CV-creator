@@ -19,6 +19,7 @@ const Input = ({ id, label, type, handleChange, value }) => {
           onChange={handleChange}
           type={type}
           value={value}
+          rows={8}
         />
       )}
     </div>

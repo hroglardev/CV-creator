@@ -3,6 +3,10 @@
 .header {
   display: flex;
   align-items: center;
-  background-color: red;
+  background-color: var(--primary-color);
   padding: $content-padding;
+  gap: 1rem;
+  img {
+    width: 5rem;
+  }
 }

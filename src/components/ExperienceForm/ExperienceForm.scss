@@ -1,3 +1,7 @@
-form {
-  border: 2px solid red;
+@use "../../index.scss" as*;
+
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }

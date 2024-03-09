@@ -1,0 +1,10 @@
+@use "../../index.scss" as *;
+
+.main {
+  padding: $content-padding;
+  background-color: var(--tertiary-color);
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+}

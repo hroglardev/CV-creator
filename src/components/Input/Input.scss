@@ -1,12 +1,22 @@
-$input-gap: 8px;
+@use"../../index.scss" as *;
 
 .input-wrapper {
   display: flex;
   flex-direction: column;
   gap: $input-gap;
 
-  input {
-    padding: 5px;
+  input, textarea {
+    padding: 8px;
     outline: none;
+    display: flex;
+    align-items: center;
+    border-radius: $small-rounding;
+    resize: none;
+    border: 3px solid black;
+    background-color: var(--tertiary-color);
+    color: #000;
+    &:focus {
+      border: 3px solid var(--accent-color);
+    }
   }
 }
