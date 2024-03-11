@@ -18,7 +18,7 @@ export const generalInformationInputs = [
     value: 'email'
   },
   {
-    id: 'phone',
+    id: 'home',
     label: 'Phone',
     type: 'tel',
     value: 'phone'

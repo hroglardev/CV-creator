@@ -1,4 +1,5 @@
 import Input from '../Input/Input';
+import PersonLogo from '../../assets/icons/person.svg';
 
 const GeneralInfoForm = ({
   inputs,
@@ -15,7 +16,15 @@ const GeneralInfoForm = ({
 
   return (
     <form>
-      <legend>General information:</legend>
+      <legend>
+        <img
+          src={PersonLogo}
+          alt='person'
+          width={'40px'}
+          className='person-logo'
+        />
+        General information:
+      </legend>
       {inputs.map((input) => (
         <Input
           key={input.id}

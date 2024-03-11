@@ -2,9 +2,22 @@
 
 .main {
   padding: $content-padding;
-  background-color: var(--tertiary-color);
+  background-color: var(--body-background-color);
 
   h2 {
     margin-bottom: 2rem;
+  }
+
+  .add-experience-container{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    button {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      transition: all 0.1s ease-in-out;
+    }
   }
 }

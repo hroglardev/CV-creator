@@ -1,4 +1,4 @@
-import ExperienceItem from "../ExperienceItem/ExperienceItem";
+import ExperienceItem from '../ExperienceItem/ExperienceItem';
 
 const Experience = ({ typeOfExperience, experiences }) => {
   return (
@@ -7,7 +7,7 @@ const Experience = ({ typeOfExperience, experiences }) => {
       {experiences.map((experience) => {
         return (
           <ExperienceItem
-            key={experience.title}
+            key={experience.key}
             title={experience.title}
             startDate={experience.startDate}
             endDate={experience.endDate}

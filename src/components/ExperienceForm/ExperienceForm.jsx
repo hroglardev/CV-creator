@@ -37,6 +37,7 @@ const ExperienceForm = ({
         <>
           <form
             onSubmit={(event) => {
+              event.preventDefault();
               handleSubmit(event, experience, experienceType);
               setIsSubmitted(true);
             }}>

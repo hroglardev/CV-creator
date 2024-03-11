@@ -2,7 +2,10 @@ import Cv from '../../components/Cv/Cv';
 import { useState } from 'react';
 import GeneralInfoForm from '../../components/GeneralInfoForm/GeneralInfoForm';
 import ExperienceForm from '../../components/ExperienceForm/ExperienceForm';
+// import Academic from '../../assets/icons/academic.svg';
+// import AcademicDark from '../../assets/icons/academic-dark.svg';
 import './Main.scss';
+
 import {
   generalInformationInputs,
   experienceInputs
@@ -20,10 +23,10 @@ const Main = () => {
     academicExperience: [],
     workExperience: []
   });
-
   const handleExperiences = (event, formData, experienceType) => {
     event.preventDefault();
-    const { title, startDate, endDate, description } = formData;
+    const { title, startDate, endDate, description, key } = formData;
+    console.log(formData);
     const experienceExists = experiences[`${experienceType}Experience`].some(
       (experience) => experience.title === title
     );
@@ -33,8 +36,8 @@ const Main = () => {
           ...previousData,
           [`${experienceType}Experience`]: [
             ...previousData[`${experienceType}Experience`],
-            { title, startDate, endDate, description }
-          ]
+            { title, startDate, endDate, description, key }
+          ].filter((experience) => experience.title === '')
         }));
   };
 
@@ -48,11 +51,18 @@ const Main = () => {
   };
 
   const addForm = (formType) => {
+    console.log('add form');
     setExperiences((previousData) => ({
       ...previousData,
       [`${formType}Experience`]: [
         ...previousData[`${formType}Experience`],
-        { title: '', startDate: '', endDate: '', description: '' }
+        {
+          title: '',
+          startDate: '',
+          endDate: '',
+          description: '',
+          key: crypto.randomUUID()
+        }
       ]
     }));
   };
@@ -65,28 +75,33 @@ const Main = () => {
         generalInformation={generalInfomation}
         setGeneralInformation={setGeneralInformation}
       />
-      {experiences.academicExperience.map((academicExperience, index) => (
+      {experiences.academicExperience.map((academicExperience) => (
         <ExperienceForm
-          key={academicExperience.title + index}
+          key={academicExperience.key}
           inputs={experienceInputs}
           experienceType='academic'
           handleSubmit={handleExperiences}
           removeExperience={removeExperience}
         />
       ))}
-      <button onClick={() => addForm('academic')}>
-        Add academic Experience
-      </button>
-      {experiences.workExperience.map((workExperience, index) => (
+
+      {experiences.workExperience.map((workExperience) => (
         <ExperienceForm
-          key={workExperience + index}
+          key={workExperience.key}
           inputs={experienceInputs}
           experienceType='work'
           handleSubmit={handleExperiences}
           removeExperience={removeExperience}
         />
       ))}
-      <button onClick={() => addForm('work')}>Add work Experience</button>
+      <div className='add-experience-container'>
+        <button type='button' onClick={() => addForm('academic')}>
+          Add academic Experience
+        </button>
+        <button type='button' onClick={() => addForm('work')}>
+          Add work Experience
+        </button>
+      </div>
       <Cv
         name={generalInfomation.firstName + ' ' + generalInfomation.lastName}
         phone={generalInfomation.phone}
