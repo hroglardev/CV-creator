@@ -1,0 +1,45 @@
+.toggler-wrapper {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+  .mode-logo {
+    height: 35px;
+    animation: fade-in 1s ease-in-out forwards;
+  }
+
+  .toggle-background {
+    width: 3rem;
+    height: 25px;
+    background-color: var(--font-color);
+    border-radius: 9999px;
+    display: grid;
+    place-content: center;
+    .toggle-button {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: var(--header-footer-color);
+      box-shadow: 0 0.5px 5px rgba(0, 0, 0, 0.7);
+      outline: none;
+      transition: all 0.2s ease-in-out;
+    }
+  
+
+     .dark {
+      transform: translateX(11px);
+    }
+
+     .light {
+      transform: translateX(-12px);
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}

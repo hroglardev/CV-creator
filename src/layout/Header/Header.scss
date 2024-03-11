@@ -9,10 +9,14 @@
   padding: $content-padding;
   gap: 1rem;
   img {
-    width: 5rem;
+    width: 4rem;
   }
 
   h1 {
-    color: var(--tertiary-color);
+    display: none;
+    color: var(--font-color);
+    @media (min-width: 500px) {
+      display: block;
+    }
   }
 }

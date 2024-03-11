@@ -1,5 +1,5 @@
 import ExperienceItem from '../ExperienceItem/ExperienceItem';
-
+import { formatDate } from '../../helpers/formatDate';
 const Experience = ({ typeOfExperience, experiences }) => {
   return (
     <section>
@@ -9,8 +9,8 @@ const Experience = ({ typeOfExperience, experiences }) => {
           <ExperienceItem
             key={experience.key}
             title={experience.title}
-            startDate={experience.startDate}
-            endDate={experience.endDate}
+            startDate={formatDate(experience.startDate)}
+            endDate={formatDate(experience.endDate)}
             description={experience.description}
           />
         );

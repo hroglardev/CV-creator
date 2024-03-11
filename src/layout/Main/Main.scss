@@ -3,21 +3,46 @@
 .main {
   padding: $content-padding;
   background-color: var(--body-background-color);
-
-  h2 {
-    margin-bottom: 2rem;
-  }
-
-  .add-experience-container{
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    button {
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      transition: all 0.1s ease-in-out;
+  display: flex;
+  gap: 25px;
+  .forms {
+   
+    width: 40%;
+    h2 {
+      margin-bottom: 2rem;
     }
+  
+    .add-experience-container{
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      button {
+        display: flex;
+        width: fit-content;
+        gap: 15px;
+        transition: all 0.1s ease-in-out;
+        align-items: center;
+        justify-content: center; 
+        background-color: var(--header-footer-color);
+         &:hover {
+          background-color: var(--accent-color);
+         }
+        }
+
+        .light:hover {
+          img {
+            filter: invert(100%);
+          }
+      }
+    }
+  }
+  .cv-wrapper {
+    border: 2px solid var(--font-color);
+    height: calc(100vh - 180px);
+    position: fixed;
+    right: 10vw;
+    bottom: 10vh;
+ 
   }
 }

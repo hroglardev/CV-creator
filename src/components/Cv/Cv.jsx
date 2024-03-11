@@ -1,5 +1,6 @@
 import ContactInfo from '../ContactInfo/ContactInfo';
 import Experience from '../Experience/Experience';
+import './Cv.scss';
 
 const Cv = ({
   name,
@@ -9,15 +10,20 @@ const Cv = ({
   workExperiences
 }) => {
   return (
-    <section>
-      <h2>{name}</h2>
-      <ContactInfo phone={phone} email={email} />
-      <Experience
-        typeOfExperience={'Educational'}
-        experiences={educationalExperiences}
-      />
-      <Experience typeOfExperience={'Work'} experiences={workExperiences} />
-    </section>
+    <div className='cv-container'>
+      <div className='cv-aside'>
+        <ContactInfo phone={phone} email={email} />
+      </div>
+      <div>
+        <h2>{name}</h2>
+
+        <Experience
+          typeOfExperience={'Educational'}
+          experiences={educationalExperiences}
+        />
+        <Experience typeOfExperience={'Work'} experiences={workExperiences} />
+      </div>
+    </div>
   );
 };
 

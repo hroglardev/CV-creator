@@ -1,10 +1,12 @@
 import Input from '../Input/Input';
-import PersonLogo from '../../assets/icons/person.svg';
+import Person from '../../assets/icons/person.svg';
+import PersonDark from '../../assets/icons/person-dark.svg';
 
 const GeneralInfoForm = ({
   inputs,
   generalInformation,
-  setGeneralInformation
+  setGeneralInformation,
+  currentMode
 }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -18,7 +20,7 @@ const GeneralInfoForm = ({
     <form>
       <legend>
         <img
-          src={PersonLogo}
+          src={currentMode === 'light' ? PersonDark : Person}
           alt='person'
           width={'40px'}
           className='person-logo'

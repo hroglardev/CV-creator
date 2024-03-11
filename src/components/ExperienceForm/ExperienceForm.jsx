@@ -1,19 +1,27 @@
 import { useState } from 'react';
 import Input from '../Input/Input';
+import Academic from '../../assets/icons/academic.svg';
+import Work from '../../assets/icons/work.svg';
+import AcademicDark from '../../assets/icons/academic-dark.svg';
+import WorkDark from '../../assets/icons/work-dark.svg';
+
 import './ExperienceForm.scss';
 
 const ExperienceForm = ({
   inputs,
   experienceType,
   handleSubmit,
-  removeExperience
+  removeExperience,
+  id,
+  currentMode
 }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [experience, setExperience] = useState({
     title: '',
     startDate: '',
     endDate: '',
-    description: ''
+    description: '',
+    key: id
   });
 
   const handleChange = (event) => {
@@ -27,12 +35,25 @@ const ExperienceForm = ({
   return (
     <>
       {isSubmitted ? (
-        <>
-          <div>{experience.title}</div>
+        <div className='edit-container'>
+          {currentMode === 'light' ? (
+            <img
+              src={experienceType === 'academic' ? AcademicDark : WorkDark}
+              alt={experienceType === 'academic' ? 'berret' : 'portfolio'}
+              width={'40px'}
+            />
+          ) : (
+            <img
+              src={experienceType === 'academic' ? Academic : Work}
+              alt={experienceType === 'academic' ? 'berret' : 'portfolio'}
+              width={'40px'}
+            />
+          )}
+          {experience.title}
           <button onClick={() => setIsSubmitted(false)} type='button'>
             Edit
           </button>
-        </>
+        </div>
       ) : (
         <>
           <form
@@ -41,7 +62,22 @@ const ExperienceForm = ({
               handleSubmit(event, experience, experienceType);
               setIsSubmitted(true);
             }}>
-            <legend>Add your {experienceType} experience:</legend>
+            <legend>
+              {currentMode === 'light' ? (
+                <img
+                  src={experienceType === 'academic' ? AcademicDark : WorkDark}
+                  alt={experienceType === 'academic' ? 'berret' : 'portfolio'}
+                  width={'50px'}
+                />
+              ) : (
+                <img
+                  src={experienceType === 'academic' ? Academic : Work}
+                  alt={experienceType === 'academic' ? 'berret' : 'portfolio'}
+                  width={'50px'}
+                />
+              )}
+              Add your {experienceType} experience:
+            </legend>
             {inputs.map((input) => (
               <Input
                 key={input.id}
@@ -59,8 +95,17 @@ const ExperienceForm = ({
               />
             ))}
             <div className='form-buttons'>
-              <button type='submit'>Add</button>
               <button
+                className={
+                  currentMode === 'light' ? 'light-button' : 'dark-button'
+                }
+                type='submit'>
+                Add
+              </button>
+              <button
+                className={
+                  currentMode === 'light' ? 'light-button' : 'dark-button'
+                }
                 type='button'
                 onClick={() =>
                   removeExperience(experience.title, experienceType)
