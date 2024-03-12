@@ -10,7 +10,8 @@ import './Main.scss';
 
 import {
   generalInformationInputs,
-  experienceInputs
+  academicExperienceInputs,
+  workExperienceInputs
 } from '../../constants/inputs';
 
 const Main = ({ currentMode }) => {
@@ -71,58 +72,64 @@ const Main = ({ currentMode }) => {
     <main className='main'>
       <section className='forms'>
         <h2>Build your CV</h2>
-        <GeneralInfoForm
-          inputs={generalInformationInputs}
-          generalInformation={generalInfomation}
-          setGeneralInformation={setGeneralInformation}
-          currentMode={currentMode}
-        />
-        {experiences.academicExperience.map((academicExperience) => (
-          <ExperienceForm
-            key={academicExperience.key}
-            id={academicExperience.key}
-            inputs={experienceInputs}
-            experienceType='academic'
-            handleSubmit={handleExperiences}
-            removeExperience={removeExperience}
-            currentMode={currentMode}
-          />
-        ))}
+        <div className='section-wrapper'>
+          <div className='main-form-container'>
+            <GeneralInfoForm
+              inputs={generalInformationInputs}
+              generalInformation={generalInfomation}
+              setGeneralInformation={setGeneralInformation}
+              currentMode={currentMode}
+            />
+            <div className='add-experience-container'>
+              <button
+                className={currentMode === 'light' && 'light'}
+                type='button'
+                onClick={() => addForm('academic')}>
+                <img
+                  src={currentMode === 'light' ? AcademicDark : Academic}
+                  alt={'berret'}
+                  width={'40px'}
+                />
+                Add experience
+              </button>
+              <button
+                className={currentMode === 'light' && 'light'}
+                type='button'
+                onClick={() => addForm('work')}>
+                <img
+                  src={currentMode === 'light' ? WorkDark : Work}
+                  alt={'portfolio'}
+                  width={'40px'}
+                />
+                Add experience
+              </button>
+            </div>
+          </div>
+          <div className='experience-forms-container'>
+            {experiences.academicExperience.map((academicExperience) => (
+              <ExperienceForm
+                key={academicExperience.key}
+                id={academicExperience.key}
+                inputs={academicExperienceInputs}
+                experienceType='academic'
+                handleSubmit={handleExperiences}
+                removeExperience={removeExperience}
+                currentMode={currentMode}
+              />
+            ))}
 
-        {experiences.workExperience.map((workExperience) => (
-          <ExperienceForm
-            key={workExperience.key}
-            id={workExperience.key}
-            inputs={experienceInputs}
-            experienceType='work'
-            handleSubmit={handleExperiences}
-            removeExperience={removeExperience}
-            currentMode={currentMode}
-          />
-        ))}
-        <div className='add-experience-container'>
-          <button
-            className={currentMode === 'light' && 'light'}
-            type='button'
-            onClick={() => addForm('academic')}>
-            <img
-              src={currentMode === 'light' ? AcademicDark : Academic}
-              alt={'berret'}
-              width={'40px'}
-            />
-            Add experience
-          </button>
-          <button
-            className={currentMode === 'light' && 'light'}
-            type='button'
-            onClick={() => addForm('work')}>
-            <img
-              src={currentMode === 'light' ? WorkDark : Work}
-              alt={'portfolio'}
-              width={'40px'}
-            />
-            Add experience
-          </button>
+            {experiences.workExperience.map((workExperience) => (
+              <ExperienceForm
+                key={workExperience.key}
+                id={workExperience.key}
+                inputs={workExperienceInputs}
+                experienceType='work'
+                handleSubmit={handleExperiences}
+                removeExperience={removeExperience}
+                currentMode={currentMode}
+              />
+            ))}
+          </div>
         </div>
       </section>
       <section className='cv-wrapper'>
@@ -132,6 +139,7 @@ const Main = ({ currentMode }) => {
           email={generalInfomation.email}
           educationalExperiences={experiences.academicExperience}
           workExperiences={experiences.workExperience}
+          currentMode={currentMode}
         />
       </section>
     </main>

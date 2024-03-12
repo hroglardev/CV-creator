@@ -1,7 +1,7 @@
 import Input from '../Input/Input';
 import Person from '../../assets/icons/person.svg';
 import PersonDark from '../../assets/icons/person-dark.svg';
-
+import './GeneralInfoForm.scss';
 const GeneralInfoForm = ({
   inputs,
   generalInformation,
@@ -17,7 +17,7 @@ const GeneralInfoForm = ({
   };
 
   return (
-    <form>
+    <form className='general-info-form'>
       <legend>
         <img
           src={currentMode === 'light' ? PersonDark : Person}
@@ -35,6 +35,7 @@ const GeneralInfoForm = ({
           type={input.type}
           handleChange={handleChange}
           value={generalInformation[input.value]}
+          placeHolder={input.placeHolder}
         />
       ))}
     </form>

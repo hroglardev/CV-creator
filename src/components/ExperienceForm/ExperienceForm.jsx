@@ -50,7 +50,12 @@ const ExperienceForm = ({
             />
           )}
           {experience.title}
-          <button onClick={() => setIsSubmitted(false)} type='button'>
+          <button
+            onClick={() => setIsSubmitted(false)}
+            type='button'
+            className={
+              currentMode === 'light' ? 'light-button' : 'dark-button'
+            }>
             Edit
           </button>
         </div>
@@ -92,6 +97,7 @@ const ExperienceForm = ({
                 type={input.type}
                 handleChange={handleChange}
                 value={experience[input.value]}
+                placeHolder={input.placeHolder}
               />
             ))}
             <div className='form-buttons'>

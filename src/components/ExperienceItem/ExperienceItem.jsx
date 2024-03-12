@@ -1,14 +1,16 @@
+import './ExperienceItem.scss';
+
 const ExperienceItem = ({
   title,
   startDate,
-  endDate = "on course",
-  description,
+  endDate = 'on course',
+  description
 }) => {
   return (
-    <article>
+    <article className='experience'>
       <h3>{title}</h3>
-      <p>{`${startDate} - ${endDate}`}</p>
-      <p>{description}</p>
+      <p className='date'>{`${startDate} - ${endDate}`}</p>
+      <p className='experience-description'>{description}</p>
     </article>
   );
 };

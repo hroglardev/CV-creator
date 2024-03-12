@@ -7,21 +7,26 @@ const Cv = ({
   phone,
   email,
   educationalExperiences,
-  workExperiences
+  workExperiences,
+  currentMode
 }) => {
   return (
     <div className='cv-container'>
       <div className='cv-aside'>
-        <ContactInfo phone={phone} email={email} />
+        <ContactInfo phone={phone} email={email} currentMode={currentMode} />
       </div>
-      <div>
-        <h2>{name}</h2>
-
+      <div className='cv-body'>
+        <h2 className='name'>{name}</h2>
         <Experience
-          typeOfExperience={'Educational'}
+          typeOfExperience={'Academic'}
           experiences={educationalExperiences}
+          currentMode={currentMode}
         />
-        <Experience typeOfExperience={'Work'} experiences={workExperiences} />
+        <Experience
+          typeOfExperience={'Work'}
+          experiences={workExperiences}
+          currentMode={currentMode}
+        />
       </div>
     </div>
   );

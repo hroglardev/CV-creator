@@ -1,9 +1,30 @@
 import ExperienceItem from '../ExperienceItem/ExperienceItem';
 import { formatDate } from '../../helpers/formatDate';
-const Experience = ({ typeOfExperience, experiences }) => {
+import Academic from '../../assets/icons/academic.svg';
+import AcademicDark from '../../assets/icons/academic-dark.svg';
+import Work from '../../assets/icons/work.svg';
+import WorkDark from '../../assets/icons/work-dark.svg';
+import './Experience.scss';
+
+const Experience = ({ typeOfExperience, experiences, currentMode }) => {
   return (
     <section>
-      <h2>{typeOfExperience} experience</h2>
+      <h3 className='experience-section'>
+        {currentMode === 'light' ? (
+          <img
+            src={typeOfExperience === 'Academic' ? AcademicDark : WorkDark}
+            alt={typeOfExperience === 'Academic' ? 'berret' : 'portfolio'}
+            width={'40px'}
+          />
+        ) : (
+          <img
+            src={typeOfExperience === 'Academic' ? Academic : Work}
+            alt={typeOfExperience === 'Academic' ? 'berret' : 'portfolio'}
+            width={'40px'}
+          />
+        )}
+        {typeOfExperience} experience
+      </h3>
       {experiences.map((experience) => {
         return (
           <ExperienceItem

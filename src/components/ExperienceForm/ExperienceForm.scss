@@ -9,7 +9,22 @@
     padding: 6px 15px;
     display: flex;
     justify-content: center;
-    margin-left: 20px;
+    margin-left: 20px; 
+  }
+  .dark-button {
+    background-color: var(--font-color);
+    color: var(--body-background-color);
+    &:hover {
+      background-color: var(--accent-color);
+      color: var(--font-color);
+    }
+  }
+  .light-button {
+    background-color: var(--font-color);
+    color: var(--body-background-color);
+    &:hover {
+      background-color: var(--accent-color);
+    }
   }
 }
 
