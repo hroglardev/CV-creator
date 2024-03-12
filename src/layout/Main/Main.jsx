@@ -54,7 +54,6 @@ const Main = ({ currentMode }) => {
   };
 
   const addForm = (formType) => {
-    console.log('add form');
     setExperiences((previousData) => ({
       ...previousData,
       [`${formType}Experience`]: [
