@@ -16,7 +16,10 @@ const ModeToggler = ({ currentMode, setCurrentMode }) => {
         ) : (
           <img className='mode-logo' src={Moon} alt='Moon' />
         )}
-        <button onClick={switchMode} className={`toggle-background`}>
+        <button
+          onClick={switchMode}
+          className={`toggle-background`}
+          aria-label='Toggle light/dark mode'>
           <div className={`toggle-button ${currentMode}`}></div>
         </button>
       </div>
