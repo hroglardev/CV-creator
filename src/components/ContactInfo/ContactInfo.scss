@@ -1,0 +1,22 @@
+.contact {
+  margin-top: 110px;
+  color: var(--body-background-color);
+  margin-bottom: 18px;
+  font-size: 1.4rem;
+}
+
+.contact-info {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  li {
+    display: flex;
+    align-items: center;
+    color: var(--body-background-color);
+    gap: 10px;
+    font-size: 0.8rem;
+    
+  }
+
+}

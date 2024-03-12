@@ -1,0 +1,80 @@
+@use "../../index.scss" as *;
+
+.main {
+  padding: $content-padding;
+  background-color: var(--body-background-color);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  @media(min-width: 1189px){
+    flex-direction: row;
+  }
+  .forms {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @media (min-width : 520px) {
+     align-items: center;
+    }
+    @media(min-width: 1189px){
+      width: 50%;
+    }
+
+    h2 {
+      margin-bottom: 2rem;
+      align-self: flex-start;
+    }
+    
+    
+
+    .section-wrapper {
+      display: flex;
+      width: 100%;
+      gap: 25px;
+      @media(min-width: 1189px){
+        flex-direction: column;
+      }
+      @media(max-width: 699px){
+        flex-direction: column;
+      }
+    }
+    .add-experience-container{
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+      button {
+        display: flex;
+        width: fit-content;
+        gap: 15px;
+        transition: all 0.1s ease-in-out;
+        align-items: center;
+        justify-content: center; 
+        background-color: var(--header-footer-color);
+         &:hover {
+          background-color: var(--accent-color);
+         }
+        }
+
+        .light:hover {
+          img {
+            filter: invert(100%);
+          }
+      }
+
+     
+    }
+  }
+  .cv-wrapper {
+    align-self: center;
+    border: 2px solid var(--font-color);
+    @media(min-width: 1189px){
+       
+     height: calc(100vh - 170px);
+     position: fixed;
+     right: 10vw;
+     bottom: 6vh;
+    }
+  }
+}

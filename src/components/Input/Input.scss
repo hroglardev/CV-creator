@@ -1,0 +1,26 @@
+@use"../../index.scss" as *;
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: $input-gap;
+  
+  label {
+    color: var(--font-color);
+  }
+
+  input, textarea {
+    padding: 8px;
+    outline: none;
+    display: flex;
+    align-items: center;
+    border-radius: $small-rounding;
+    resize: none;
+    border: 2px solid #2b2c36;
+    background-color: var(--input-backgrounds);
+    color: var(--input-font-color);
+    &:focus {
+      border: 2px solid var(--accent-color);
+    }
+  }
+}

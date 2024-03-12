@@ -1,0 +1,18 @@
+.cv-container {
+  display: flex;
+  height: 100%;
+  .cv-aside, .cv-body{
+    padding: 10px;
+    
+  }
+
+  .cv-aside{
+    background-color: var(--font-color);
+  }
+  .cv-body {
+    background-color: var(--header-footer-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
