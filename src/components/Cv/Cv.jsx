@@ -6,6 +6,7 @@ const Cv = ({
   name,
   phone,
   email,
+  website,
   educationalExperiences,
   workExperiences,
   currentMode
@@ -13,7 +14,12 @@ const Cv = ({
   return (
     <div className='cv-container'>
       <div className='cv-aside'>
-        <ContactInfo phone={phone} email={email} currentMode={currentMode} />
+        <ContactInfo
+          website={website}
+          phone={phone}
+          email={email}
+          currentMode={currentMode}
+        />
       </div>
       <div className='cv-body'>
         <h2 className='name'>{name}</h2>

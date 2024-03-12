@@ -19,7 +19,8 @@ const Main = ({ currentMode }) => {
     firstName: '',
     lastName: '',
     email: '',
-    phone: ''
+    phone: '',
+    website: ''
   });
 
   const [experiences, setExperiences] = useState({
@@ -137,6 +138,7 @@ const Main = ({ currentMode }) => {
           name={generalInfomation.firstName + ' ' + generalInfomation.lastName}
           phone={generalInfomation.phone}
           email={generalInfomation.email}
+          website={generalInfomation.website}
           educationalExperiences={experiences.academicExperience}
           workExperiences={experiences.workExperience}
           currentMode={currentMode}

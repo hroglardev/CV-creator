@@ -4,7 +4,11 @@
   padding: $content-padding;
   background-color: var(--body-background-color);
   display: flex;
+  flex-direction: column;
   gap: 25px;
+  @media(min-width: 1189px){
+    flex-direction: row;
+  }
   .forms {
     display: flex;
     flex-direction: column;
@@ -21,6 +25,8 @@
       align-self: flex-start;
     }
     
+    
+
     .section-wrapper {
       display: flex;
       width: 100%;
@@ -59,18 +65,16 @@
 
      
     }
-    .experience-forms-container {
-      
-    }
   }
   .cv-wrapper {
+    align-self: center;
     border: 2px solid var(--font-color);
-    height: calc(100vh - 180px);
-    position: fixed;
-    right: 10vw;
-    bottom: 10vh;
-    @media (max-width: 1189px) {
-      display: none;
+    @media(min-width: 1189px){
+       
+     height: calc(100vh - 170px);
+     position: fixed;
+     right: 10vw;
+     bottom: 6vh;
     }
   }
 }

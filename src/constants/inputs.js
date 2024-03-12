@@ -26,6 +26,13 @@ export const generalInformationInputs = [
     type: 'tel',
     value: 'phone',
     placeHolder: '123456789'
+  },
+  {
+    id: 'website',
+    label: 'Personal Website',
+    type: 'text',
+    value: 'website',
+    placeHolder: 'hroglardev.github.io/Lucas-Cubile/'
   }
 ];
 
