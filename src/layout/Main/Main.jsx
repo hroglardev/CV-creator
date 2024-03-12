@@ -24,7 +24,15 @@ const Main = ({ currentMode }) => {
   });
 
   const [experiences, setExperiences] = useState({
-    academicExperience: [],
+    academicExperience: [
+      {
+        title: '',
+        startDate: '',
+        endDate: '',
+        description: '',
+        key: crypto.randomUUID()
+      }
+    ],
     workExperience: []
   });
   const handleExperiences = (event, formData, experienceType) => {
